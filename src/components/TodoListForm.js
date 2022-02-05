@@ -1,5 +1,10 @@
 import React from "react";
 import { Field, reduxForm } from 'redux-form';
+import Button from '@mui/material/Button';
+import { Link } from "react-router-dom";
+import TextField from '@mui/material/TextField';
+
+
 
 class TodoListForm extends React.Component {
 
@@ -35,7 +40,11 @@ class TodoListForm extends React.Component {
         return (
             <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error" >
                 <Field name='description' component={this.renderInput} label="Enter Description" />
-                <button className="ui button primary"> Submit</button>
+                
+                <button className="ui button green"> save</button>
+                <Link to="/">
+                    <button className="ui button "> cancel</button>
+                </Link>
             </form>
         )
     }
