@@ -9,9 +9,11 @@ class TodoListCreate extends React.Component {
         this.props.createTodoList(formValues);
     }
     render() {
+        const mainDiv = {paddingTop: '60px', width: '480px', margin: '0 auto'};
         return (
-            <div>
-                ToDoList create
+            <div className="container" style={mainDiv}>
+                <h3> Add a task description </h3>
+                <hr></hr>
                 <TodoListForm onSubmit={this.onSubmit} />
             </div>
         );

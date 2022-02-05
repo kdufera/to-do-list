@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
 import { reducer as formReducer } from "redux-form";
-import todoListReducer from "./TodoListReducer";
+import TodoListReducer from "./TodoListReducer";
 
 
 export default combineReducers({
    form: formReducer,
-   list: todoListReducer
+   list: TodoListReducer
 });
 
