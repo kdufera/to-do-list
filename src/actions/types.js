@@ -1,0 +1,4 @@
+export const CREATE_TODO_LIST = 'CREATE_TODO_LIST';
+export const FETCH_TODO_LIST  = 'FETCH_TODO_LIST';
+
+
