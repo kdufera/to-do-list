@@ -30,4 +30,4 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ## Dependencies 
 
-run the back end server before string this application
+Run the back end server before string this application

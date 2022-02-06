@@ -1,16 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import Box from '@mui/material/Box';
-import Icon from '@mui/material/Icon';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
 import IconButton from '@mui/material/IconButton';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
+import TodoListTable from "./TodoListTable";
 
 import {
     fetchTodoLists,
@@ -22,20 +16,6 @@ class TodoList extends React.Component {
 
     componentDidMount() {
         this.props.fetchTodoLists();
-    }
-
-    removeTodoListItem(id) {
-        this.props.deleteTodoList(id);
-    }
-    
-    activateTaskCompletionStatus(data) {
-        data.isCompleted = true;
-        this.props.updateCompletedFlag(data);
-    }
-
-    deactivateTaskCompletionStatus(data) {
-        data.isCompleted = false;
-        this.props.updateCompletedFlag(data);
     }
 
     renderTodoList() {
@@ -70,45 +50,7 @@ class TodoList extends React.Component {
 
         const noPointer = { cursor: 'default', fontSize: 33, color: 'red' };
         return (
-            <List sx={{ width: '100%', maxWidth: 800 }}>
-                <ListItem>
-                    <ListItemAvatar>
-                        {this.renderCheckBoxType(listData)}
-                    </ListItemAvatar>
-                    <ListItemText primary={listData.description} />
-                    <ListItemAvatar>
-                        <div>
-                            <IconButton tooltip="Description here" style={noPointer}>
-                                <DeleteForeverIcon
-                                    onClick={() => this.removeTodoListItem(listData.id)}
-                                    style={noPointer}
-                                />
-                            </IconButton>
-                        </div>
-                    </ListItemAvatar>
-                </ListItem>
-            </List>
-        );
-    }
-
-    renderCheckBoxType(listData) {
-        if (!listData.isCompleted) {
-            return (
-                <Box>
-                    <Icon
-                        onClick={() => this.activateTaskCompletionStatus(listData)}
-                        sx={{ fontSize: 30 }}>radio_button_unchecked
-                    </Icon>
-                </Box>
-            );
-        }
-        return (
-            <Box>
-                <Icon
-                    onClick={() => this.deactivateTaskCompletionStatus(listData)}
-                    sx={{ fontSize: 30 }}>task_alt
-                </Icon>
-            </Box>
+            <TodoListTable listData={listData} />
         );
     }
 
